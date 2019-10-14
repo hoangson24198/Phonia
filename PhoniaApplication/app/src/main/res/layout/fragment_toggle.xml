@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.ToggleFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/windowBackground">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/windowBackground">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:text="Discovery"
+                    android:textColor="#034898"
+                    android:textStyle="bold"/>
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+    <LinearLayout
+        android:id="@+id/dis_bar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_post_item"
+        android:layout_below="@+id/bar"
+        >
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/dis_profile_image"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/dis_username"
+                android:textSize="20sp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/post_time"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="View your profile"
+                android:textSize="14sp"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/dis_more"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:orientation="vertical"
+        android:layout_below="@+id/dis_bar"
+        android:background="@color/white"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/memory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="  Memory"
+            android:textSize="16sp"
+            android:padding="15dp"
+            android:textColor="@color/colorBlack"
+            android:drawableStart="@drawable/ic_memory"/>
+        <TextView
+            android:id="@+id/dating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="  Dating"
+            android:textSize="16sp"
+            android:padding="15dp"
+            android:textColor="@color/colorBlack"
+            android:drawableStart="@drawable/ic_dating"/>
+        <TextView
+            android:id="@+id/event"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="  Events"
+            android:textSize="16sp"
+            android:padding="15dp"
+            android:textColor="@color/colorBlack"
+            android:drawableStart="@drawable/ic_event"/>
+        <TextView
+            android:id="@+id/setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="  Setting"
+            android:textSize="16sp"
+            android:padding="15dp"
+            android:textColor="@color/colorBlack"
+            android:drawableStart="@drawable/ic_setting"/>
+        <TextView
+            android:id="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="  Logout"
+            android:textSize="16sp"
+            android:padding="15dp"
+            android:textColor="@color/colorBlack"
+            android:drawableStart="@drawable/ic_logout"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

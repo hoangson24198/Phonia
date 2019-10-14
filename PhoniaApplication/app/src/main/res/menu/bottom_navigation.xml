@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:toggle="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home"
+        android:title=""/>
+    <!--<item
+        android:id="@+id/nav_friends"
+        android:icon="@drawable/ic_friends"
+        android:title=""/>-->
+
+    <item
+        android:id="@+id/nav_heart"
+        android:icon="@drawable/ic_notify"
+        android:title=""/>
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_profile"
+        android:title=""/>
+    <item
+        android:id="@+id/nav_toggle"
+        android:title=""
+        android:icon="@drawable/ic_nav">
+
+    </item>
+
+</menu>
