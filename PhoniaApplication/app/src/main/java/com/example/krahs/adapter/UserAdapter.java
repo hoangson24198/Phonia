@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,6 +24,7 @@ import com.example.krahs.fragments.ProfileFragment;
 import com.example.krahs.activity.MainActivity;
 import com.example.krahs.model.User;
 import com.example.krahs.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.List;
@@ -70,7 +70,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ImageViewHolde
             holder.image_profile.setImageResource(R.mipmap.ic_launcher);
         }
         else {
-            Glide.with(mContext).load(user.getImageurl()).into(holder.image_profile);
+            Picasso.get().load(user.getImageurl()).into(holder.image_profile);
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,6 +26,7 @@ import com.example.krahs.activity.MainActivity;
 import com.example.krahs.model.Comment;
 import com.example.krahs.model.User;
 import com.example.krahs.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -143,7 +143,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ImageVie
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                Glide.with(mContext).load(user.getImageurl()).into(imageView);
+                Picasso.get().load(user.getImageurl()).into(imageView);
                 username.setText(user.getUsername());
             }
 

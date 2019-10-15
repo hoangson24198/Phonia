@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PuccaRingApplication.iml" filepath="$PROJECT_DIR$/PuccaRingApplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PhoniaApplication.iml" filepath="$PROJECT_DIR$/PhoniaApplication.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

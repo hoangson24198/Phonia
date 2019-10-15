@@ -15,7 +15,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.krahs.activity.ChatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,6 +30,7 @@ import com.example.krahs.model.Post;
 import com.example.krahs.model.User;
 import com.example.krahs.activity.OptionsActivity;
 import com.example.krahs.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -225,7 +225,7 @@ public class ProfileFragment extends Fragment {
                 }
                 User user = dataSnapshot.getValue(User.class);
 
-                Glide.with(getContext()).load(user.getImageurl()).into(image_profile);
+                Picasso.get().load(user.getImageurl()).into(image_profile);
                 username.setText(user.getUsername());
                 fullname.setText(user.getFullname());
                 bio.setText(user.getBio());

@@ -15,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.krahs.model.User;
 import com.example.krahs.activity.PostActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,9 +28,11 @@ import com.example.krahs.adapter.StoryAdapter;
 import com.example.krahs.model.Post;
 import com.example.krahs.model.Story;
 import com.example.krahs.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class HomeFragment extends Fragment {
 
@@ -89,6 +90,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ChatListFragment chatListFragment = new ChatListFragment();
+                assert getFragmentManager() != null;
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container,chatListFragment);
                 fragmentTransaction.addToBackStack(null);
@@ -99,6 +101,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 SearchFragment searchFragment = new SearchFragment();
+                assert getFragmentManager() != null;
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container,searchFragment);
                 fragmentTransaction.addToBackStack(null);
@@ -124,11 +127,12 @@ public class HomeFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                if (user.getImageurl().equals("default")){
+                if (Objects.requireNonNull(user).getImageurl().equals("default")){
                     post_profile_image.setImageResource(R.mipmap.ic_launcher);
                 } else {
                     //and this
-                    Glide.with(getContext()).load(user.getImageurl()).into(post_profile_image);
+                    /*Glide.with(Objects.requireNonNull(getContext())).load(user.getImageurl()).into(post_profile_image);*/
+                    Picasso.get().load(user.getImageurl()).into(post_profile_image);
                 }
             }
 

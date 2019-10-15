@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,6 +23,7 @@ import com.example.krahs.model.Story;
 import com.example.krahs.model.User;
 import com.example.krahs.R;
 import com.example.krahs.activity.StoryActivity;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -113,9 +113,9 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder>{
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                Glide.with(mContext).load(user.getImageurl()).into(viewHolder.story_photo);
+                Picasso.get().load(user.getImageurl()).into(viewHolder.story_photo);
                 if (pos != 0) {
-                    Glide.with(mContext).load(user.getImageurl()).into(viewHolder.story_photo_seen);
+                    Picasso.get().load(user.getImageurl()).into(viewHolder.story_photo_seen);
                     viewHolder.story_username.setText(user.getUsername());
                 }
             }

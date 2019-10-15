@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.krahs.activity.LoginActivity;
 import com.example.krahs.model.User;
 import com.example.krahs.R;
@@ -23,6 +22,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -63,7 +63,7 @@ public class ToggleFragment extends Fragment {
                     dis_profile_image.setImageResource(R.mipmap.ic_launcher);
                 } else {
                     //and this
-                    Glide.with(getContext()).load(user.getImageurl()).into(dis_profile_image);
+                    Picasso.get().load(user.getImageurl()).into(dis_profile_image);
                 }
             }
 

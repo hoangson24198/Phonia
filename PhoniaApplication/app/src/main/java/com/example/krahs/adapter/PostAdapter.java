@@ -19,8 +19,6 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,6 +35,7 @@ import com.example.krahs.fragments.ProfileFragment;
 import com.example.krahs.model.Post;
 import com.example.krahs.model.User;
 import com.example.krahs.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.List;
@@ -68,9 +67,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         final Post post = mPosts.get(position);
 
-        Glide.with(mContext).load(post.getPostimage())
-                .apply(new RequestOptions().placeholder(R.drawable.placeholder))
-                .into(holder.post_image);
+        Picasso.get().load(post.getPostimage()).placeholder(R.drawable.placeholder).into(holder.post_image);
 
         if (post.getDescription().equals("")){
             holder.description.setVisibility(View.GONE);
@@ -335,7 +332,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                Glide.with(mContext).load(user.getImageurl()).into(image_profile);
+                Picasso.get().load(user.getImageurl()).into(image_profile);
                 username.setText(user.getUsername());
                 /*publisher.setText(user.getUsername());*/
             }

@@ -15,7 +15,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.krahs.model.Chat;
 import com.example.krahs.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -34,8 +34,8 @@ import java.util.Locale;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
-    public static  final int MSG_TYPE_LEFT = 0;
-    public static  final int MSG_TYPE_RIGHT = 1;
+    public static final int MSG_TYPE_LEFT = 0;
+    public static final int MSG_TYPE_RIGHT = 1;
 
     private Context mContext;
     private List<Chat> mChat;
@@ -43,7 +43,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
     FirebaseUser fuser;
 
-    public ChatAdapter(Context mContext, List<Chat> mChat, String imageurl){
+    public ChatAdapter(Context mContext, List<Chat> mChat, String imageurl) {
         this.mChat = mChat;
         this.mContext = mContext;
         this.imageurl = imageurl;
@@ -69,15 +69,15 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         //convert time stamp to do dd/MM/yy
         Calendar calendar = Calendar.getInstance(Locale.ENGLISH);
         calendar.setTimeInMillis(Long.parseLong(time));
-        String datetime = DateFormat.format("dd/MM/yyyy hh:mm aa",calendar).toString();
+        String datetime = DateFormat.format("dd/MM/yyyy hh:mm aa", calendar).toString();
 
         holder.show_message.setText(chat.getMessage());
         holder.time.setText(datetime);
 
-        if (imageurl.equals("default")){
+        if (imageurl.equals("default")) {
             holder.profile_image.setImageResource(R.mipmap.ic_launcher);
         } else {
-            Glide.with(mContext).load(imageurl).into(holder.profile_image);
+            Picasso.get().load(imageurl).into(holder.profile_image);
         }
 
         //click to show delete dialog
@@ -109,8 +109,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
             }
         });
 
-        if (position == mChat.size()-1){
-            if (chat.isIsseen()){
+        if (position == mChat.size() - 1) {
+            if (chat.isIsseen()) {
                 holder.txt_seen.setText("Seen"); //trạng thái đã đọc
             } else {
                 holder.txt_seen.setText("Delivered"); //trạng thái đã nhận
@@ -120,33 +120,33 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         }
 
     }
+
     //hàm xóa tin nhắn
     private void deleteMessage(int position) {
         final String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         /*Logic
-        * Lấy time stamp của tin nhắn được click vào
-        * So sánh time stamp đó với time stamp của tất cả tin nhắn trong List "Chats"
-        * Thời gian nào bằng thì xóa
-        * */
+         * Lấy time stamp của tin nhắn được click vào
+         * So sánh time stamp đó với time stamp của tất cả tin nhắn trong List "Chats"
+         * Thời gian nào bằng thì xóa
+         * */
         String msgTimeStamp = mChat.get(position).getTime();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Chats");
         Query query = databaseReference.orderByChild("time").equalTo(msgTimeStamp);
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     /*Chỉ có người gửi được quyền xóa tin nhắn
-                    * Ý tưởng:so sánh id sender của tin nhắn với id user hiện tại,giống nhau thì cho phép*/
-                    if(ds.child("sender").getValue().equals(currentUserId)){
-                    //Thiết lại lại giá trị của tin nhắn đó thành "Tin nhắn đã xóa"
+                     * Ý tưởng:so sánh id sender của tin nhắn với id user hiện tại,giống nhau thì cho phép*/
+                    if (ds.child("sender").getValue().equals(currentUserId)) {
+                        //Thiết lại lại giá trị của tin nhắn đó thành "Tin nhắn đã xóa"
 
-                        HashMap<String,Object> hashMap = new HashMap<>();
-                        hashMap.put("message","Tin nhắn đã xóa...");
+                        HashMap<String, Object> hashMap = new HashMap<>();
+                        hashMap.put("message", "Tin nhắn đã xóa...");
                         ds.getRef().updateChildren(hashMap);
-                        Toast.makeText(mContext,"Đã xóa",Toast.LENGTH_LONG).show();
-                    }
-                    else {
-                        Toast.makeText(mContext,"Bạn chỉ được xóa tin nhắn của bạn!",Toast.LENGTH_LONG).show();
+                        Toast.makeText(mContext, "Đã xóa", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(mContext, "Bạn chỉ được xóa tin nhắn của bạn!", Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -163,11 +163,11 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         return mChat.size();
     }
 
-    public  class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView show_message;
         public ImageView profile_image;
-        public TextView txt_seen,time;
+        public TextView txt_seen, time;
         public LinearLayout messageLayout; //for click listener to show delete
 
         public ViewHolder(View itemView) {
@@ -184,7 +184,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     @Override
     public int getItemViewType(int position) {
         fuser = FirebaseAuth.getInstance().getCurrentUser();
-        if (mChat.get(position).getSender().equals(fuser.getUid())){
+        if (mChat.get(position).getSender().equals(fuser.getUid())) {
             return MSG_TYPE_RIGHT;
         } else {
             return MSG_TYPE_LEFT;

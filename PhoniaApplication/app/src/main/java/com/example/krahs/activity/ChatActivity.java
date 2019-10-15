@@ -17,7 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.krahs.adapter.ChatAdapter;
 import com.example.krahs.model.Chat;
 import com.example.krahs.model.User;
@@ -34,6 +33,7 @@ import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -144,7 +144,7 @@ public class ChatActivity extends AppCompatActivity {
                     receiver_image.setImageResource(R.mipmap.ic_launcher);
                 } else {
                     //and this
-                    Glide.with(getApplicationContext()).load(user.getImageurl()).into(receiver_image);
+                    Picasso.get().load(user.getImageurl()).into(receiver_image);
                 }
 
                 readMesagges(fuser.getUid(), userid, user.getImageurl());

@@ -1,79 +1,42 @@
 {
   "project_info": {
-    "project_number": "143240892818",
-    "firebase_url": "https://puccaringapplication.firebaseio.com",
-    "project_id": "puccaringapplication",
-    "storage_bucket": "puccaringapplication.appspot.com"
+    "project_number": "669483816943",
+    "firebase_url": "https://phonia-a1798.firebaseio.com",
+    "project_id": "phonia-a1798",
+    "storage_bucket": "phonia-a1798.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:143240892818:android:74d0c93dd5ee9cc8",
+        "mobilesdk_app_id": "1:669483816943:android:46fc1b76911739ed35881a",
         "android_client_info": {
-          "package_name": "com.example.puccaring"
+          "package_name": "com.example.krahs"
         }
       },
       "oauth_client": [
         {
-          "client_id": "143240892818-ci7j71l2f7p5hluf4cl8i7il6akqri5g.apps.googleusercontent.com",
+          "client_id": "669483816943-nc0nagdnie8o5tnpiebo98q73iol3fla.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.puccaring",
+            "package_name": "com.example.krahs",
             "certificate_hash": "c40579e01cb85494040603dbb88f33efbd596e65"
           }
         },
         {
-          "client_id": "143240892818-pj20iufb9s8kfrj3c5uasjc5jc0kd8fa.apps.googleusercontent.com",
+          "client_id": "669483816943-e980mmssss8ragblahmralf18r81pv72.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAr8zGN77kkCDEOWBUnVoKELDsC-3FMLeA"
+          "current_key": "AIzaSyD_z0ifgYZBw0kZXad1QaRLOA1m3EaTKAc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "143240892818-pj20iufb9s8kfrj3c5uasjc5jc0kd8fa.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:143240892818:android:509cd9358308bf9f",
-        "android_client_info": {
-          "package_name": "com.koddev.instagramtest"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "143240892818-kteia62g9h18dtpas1nmhamgmkfmv8vr.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.koddev.instagramtest",
-            "certificate_hash": "4b3cc6d9dd3141896e803fca3582dea0e68790bd"
-          }
-        },
-        {
-          "client_id": "143240892818-pj20iufb9s8kfrj3c5uasjc5jc0kd8fa.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAr8zGN77kkCDEOWBUnVoKELDsC-3FMLeA"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "143240892818-pj20iufb9s8kfrj3c5uasjc5jc0kd8fa.apps.googleusercontent.com",
+              "client_id": "669483816943-e980mmssss8ragblahmralf18r81pv72.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.krahs.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.example.krahs.model.Story;
 import com.example.krahs.model.User;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -151,7 +151,7 @@ public class StoryActivity extends AppCompatActivity implements StoriesProgressV
 
     @Override
     public void onNext() {
-        Glide.with(getApplicationContext()).load(images.get(++counter)).into(image);
+        Picasso.get().load(images.get(++counter)).into(image);
         //
         addView(storyids.get(counter));
         seenNumber(storyids.get(counter));
@@ -161,7 +161,7 @@ public class StoryActivity extends AppCompatActivity implements StoriesProgressV
     @Override
     public void onPrev() {
         if ((counter - 1) < 0) return;
-        Glide.with(getApplicationContext()).load(images.get(--counter)).into(image);
+        Picasso.get().load(images.get(--counter)).into(image);
         //
         seenNumber(storyids.get(counter));
         //
@@ -214,7 +214,7 @@ public class StoryActivity extends AppCompatActivity implements StoriesProgressV
                 storiesProgressView.setStoriesListener(StoryActivity.this);
                 storiesProgressView.startStories(counter);
 
-                Glide.with(getApplicationContext()).load(images.get(counter)).into(image);
+                Picasso.get().load(images.get(counter)).into(image);
                 //
                 addView(storyids.get(counter));
                 seenNumber(storyids.get(counter));
@@ -235,7 +235,7 @@ public class StoryActivity extends AppCompatActivity implements StoriesProgressV
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                Glide.with(getApplicationContext()).load(user.getImageurl()).into(story_photo);
+                Picasso.get().load(user.getImageurl()).into(story_photo);
                 story_username.setText(user.getUsername());
             }
 

@@ -10,10 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.example.krahs.fragments.PostDetailFragment;
 import com.example.krahs.model.Post;
 import com.example.krahs.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class MyFotosAdapter extends RecyclerView.Adapter<MyFotosAdapter.ImageVie
 
         final Post post = mPosts.get(position);
 
-        Glide.with(mContext).load(post.getPostimage()).into(holder.post_image);
+        Picasso.get().load(post.getPostimage()).into(holder.post_image);
 
         holder.post_image.setOnClickListener(new View.OnClickListener() {
             @Override

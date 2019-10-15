@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.krahs.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.example.krahs.adapter.CommentAdapter;
 import com.example.krahs.model.Comment;
 import com.example.krahs.model.User;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -129,7 +129,7 @@ public class CommentsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                Glide.with(getApplicationContext()).load(user.getImageurl()).into(image_profile);
+                Picasso.get().load(user.getImageurl()).into(image_profile);
             }
 
             @Override

@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,6 +22,7 @@ import com.example.krahs.model.Notification;
 import com.example.krahs.model.Post;
 import com.example.krahs.model.User;
 import com.example.krahs.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -114,7 +114,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                Glide.with(mContext).load(user.getImageurl()).into(imageView);
+                Picasso.get().load(user.getImageurl()).into(imageView);
                 username.setText(user.getUsername());
             }
 
@@ -133,7 +133,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Post post = dataSnapshot.getValue(Post.class);
-                Glide.with(mContext).load(post.getPostimage()).into(post_image);
+                Picasso.get().load(post.getPostimage()).into(post_image);
             }
 
             @Override

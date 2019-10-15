@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.krahs.fragments.ProfileFragment;
 import com.example.krahs.R;
 import com.google.android.gms.tasks.Continuation;
@@ -33,10 +32,12 @@ import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.example.krahs.model.User;
 import com.rengwuxian.materialedittext.MaterialEditText;
+import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class EditProfileActivity extends AppCompatActivity {
 
@@ -47,7 +48,7 @@ public class EditProfileActivity extends AppCompatActivity {
     FirebaseUser firebaseUser;
 
     private Uri mImageUri;
-    private StorageTask uploadTask;
+    private StorageTask<UploadTask.TaskSnapshot> uploadTask;
     StorageReference storageRef;
 
     @Override
@@ -74,7 +75,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 fullname.setText(user.getFullname());
                 username.setText(user.getUsername());
                 bio.setText(user.getBio());
-                Glide.with(getApplicationContext()).load(user.getImageurl()).into(image_profile);
+                Picasso.get().load(user.getImageurl()).into(image_profile);
             }
 
             @Override
@@ -156,7 +157,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 @Override
                 public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
                     if (!task.isSuccessful()) {
-                        throw task.getException();
+                        throw Objects.requireNonNull(task.getException());
                     }
                     return fileReference.getDownloadUrl();
                 }
