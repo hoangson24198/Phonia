@@ -3,4 +3,21 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="or">or</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="sign_up_now">Sign up now</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="display_name">Display name</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="please_wait">Please wait</string>
+    <string name="your_name">Your name</string>
+    <string name="home">Home</string>
+    <string name="notification">Notification</string>
+    <string name="profile">Profile</string>
+    <string name="setting">Setting</string>
 </resources>

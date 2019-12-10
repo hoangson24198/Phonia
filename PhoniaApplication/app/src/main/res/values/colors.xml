@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#455cde</color>
+    <color name="colorPrimary">#000</color>
     <color name="colorPrimaryDark">#403d3d</color>
     <color name="colorAccent">#c2bdbf</color>
     <color name="colorBlack">#000000</color>
@@ -10,7 +10,7 @@
     <color name="colorWindow">?android:attr/windowBackground</color>
 
     <color name="redrose">#e81e25</color>
-    <color name="coral">#fe7773</color>
+    <color name="morning">#fe7773</color>
     <color name="lightpink">#ffc2c3</color>
 
     <color name="login_form_detail">#ccffffff</color>
@@ -23,4 +23,17 @@
     <color name="colorPurpleT">#64983cff</color>
     <color name="colorBlue">#2FB4FF</color>
     <color name="colorBlueT">#642fb4ff</color>
+    <color name="colorDenim">#103667</color>
+
+    <!--Gradient main color-->
+    <color name="coral">#1eadf0</color>
+    <color name="green_neon">#0afb60</color>
+
+    <array name="dot_colors">
+        <item>#03A9F4</item>
+        <item>#E65100</item>
+        <item>#FFBB00</item>
+    </array>
+    <color name="speech_bubble_user">#fff</color>
+    <color name="speech_bubble_agent">#1eadf0</color>
 </resources>

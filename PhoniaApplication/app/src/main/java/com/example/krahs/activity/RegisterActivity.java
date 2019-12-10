@@ -6,8 +6,11 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -26,26 +29,27 @@ import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText username, fullname, email, password,confirm_password;
+    EditText edt_username, edt_fullname, edt_email, edt_password,edt_confirm_password;
     Button register;
     ImageView img_back;
 
     FirebaseAuth auth;
     DatabaseReference reference;
     ProgressDialog pd;
+    String check;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
-        username = findViewById(R.id.username);
-        email = findViewById(R.id.email);
-        fullname = findViewById(R.id.fullname);
-        password = findViewById(R.id.password);
-        register = findViewById(R.id.btn_register);
-        img_back = findViewById(R.id.back_btn);
-        confirm_password = findViewById(R.id.confirm_password);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        edt_username = findViewById(R.id.su_displayname);
+        edt_email = findViewById(R.id.su_email);
+        edt_fullname = findViewById(R.id.su_yourname);
+        edt_password = findViewById(R.id.su_password);
+        register = findViewById(R.id.su_sign_up);
+        img_back = findViewById(R.id.su_back);
+        edt_confirm_password = findViewById(R.id.su_confirm_pass);
 
         auth = FirebaseAuth.getInstance();
 
@@ -63,22 +67,22 @@ public class RegisterActivity extends AppCompatActivity {
                 pd.setMessage("Please wait...");
                 pd.show();
 
-                String str_username = username.getText().toString();
-                String str_fullname = fullname.getText().toString();
-                String str_email = email.getText().toString();
-                String str_password = password.getText().toString();
-                String cf_password = confirm_password.getText().toString();
+                String str_username = edt_username.getText().toString();
+                String str_fullname = edt_fullname.getText().toString();
+                String str_email = edt_email.getText().toString();
+                String str_password = edt_password.getText().toString();
+                String cf_password = edt_confirm_password.getText().toString();
 
-                if (TextUtils.isEmpty(str_username) || TextUtils.isEmpty(str_fullname) || TextUtils.isEmpty(str_email) || TextUtils.isEmpty(str_password)){
+                /*if (TextUtils.isEmpty(str_username) || TextUtils.isEmpty(str_fullname) || TextUtils.isEmpty(str_email) || TextUtils.isEmpty(str_password)){
                     Toast.makeText(RegisterActivity.this, "All fields are required!", Toast.LENGTH_SHORT).show();
                 } else if(str_password.length() < 6){
                     Toast.makeText(RegisterActivity.this, "Password must have 6 characters!", Toast.LENGTH_SHORT).show(); //todo replace alert
                 } else if(!str_password.equals(cf_password))
                 {
                     Toast.makeText(RegisterActivity.this,"Confirm password incorrect!",Toast.LENGTH_LONG).show();
-                }
+                }*/
 
-                else {
+                if (!validateUsername(str_email,str_username) || !validatePassword(str_password,cf_password)){
                     register(str_username, str_fullname, str_email, str_password);
                 }
             }
@@ -120,4 +124,92 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    private boolean validatePassword(String pass,String retypePassword) {
+
+
+        if (pass.length() < 4 || pass.length() > 20) {
+            edt_password.setError("Password Must consist of 4 to 20 characters");
+            return false;
+        }
+        if (!pass.equals(retypePassword)){
+            edt_confirm_password.setError("Password and retype password not matched");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateUsername(String email,String displayname) {
+
+        if (email.length() < 4 || email.length() > 30) {
+            edt_email.setError("Email Must consist of 4 to 30 characters");
+            return false;
+        } else if (!email.matches("^[A-za-z0-9.@]+")) {
+            edt_email.setError("Only . and @ characters allowed");
+            return false;
+        } else if (!email.contains("@") || !email.contains(".")) {
+            edt_email.setError("Email must contain @ and .");
+            return false;
+        }
+        if (displayname.length()==0){
+            edt_username.setError("This field can't empty");
+            return false;
+        }
+        return true;
+    }
+
+    TextWatcher usernameWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            check = s.toString();
+
+            if (check.length() < 4 || check.length() > 40) {
+                edt_email.setError("Email Must consist of 4 to 20 characters");
+            } else if (!check.matches("^[A-za-z0-9.@]+")) {
+                edt_email.setError("Only . and @ characters allowed");
+            } else if (!check.contains("@") || !check.contains(".")) {
+                edt_email.setError("Enter Valid Email");
+            }
+            if (check.length() == 0) {
+                edt_username.setError("This field can't empty");
+                edt_email.setError("This field can't empty");
+                edt_password.setError("This field can't empty");
+                edt_confirm_password.setError("This field can't empty");
+            }
+        }
+
+    };
+
+    TextWatcher passWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            check = editable.toString();
+            if (check.length() < 4 || check.length() > 20) {
+                edt_password.setError("Password Must consist of 4 to 20 characters");
+            } else if (!check.matches("^[A-za-z0-9@]+")) {
+                edt_password.setError("Only @ special character allowed");
+            }
+        }
+    };
 }

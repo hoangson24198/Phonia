@@ -47,4 +47,16 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //dot loader
+    implementation 'com.github.bhargavms:DotLoader:1.1.1'
+
+    //custom edit text
+    implementation 'com.github.scottyab:showhidepasswordedittext:0.8'
+
+    implementation 'com.kaopiz:kprogresshud:1.1.0'
+    implementation 'com.geniusforapp.fancydialog:FancyDialog:0.1.4'
+
+    implementation 'com.github.armcha:SpaceNavigationView:1.6.0'
+
 }

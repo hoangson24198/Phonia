@@ -45,8 +45,7 @@ public class HomeFragment extends Fragment {
     private List<Story> storyList;
     String currentUserId;
     private List<String> followingList;
-    private ImageView inBox_btn,search_btn,post_profile_image,post_btn;
-    private TextView post_status;
+    private ImageView inBox_btn,search_btn;
 
     ProgressBar progress_circular;
 
@@ -59,9 +58,6 @@ public class HomeFragment extends Fragment {
 
         inBox_btn = view.findViewById(R.id.inbox_btn);
         search_btn = view.findViewById(R.id.search_btn);
-        post_btn = view.findViewById(R.id.post_btn);
-        post_status = view.findViewById(R.id.post_status);
-        post_profile_image = view.findViewById(R.id.post_profile_image);
 
         currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -108,21 +104,10 @@ public class HomeFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
-         post_status.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View view) {
-                 startActivity(new Intent(getActivity(), PostActivity.class));
-             }
-         });
-         post_btn.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View view) {
-                 startActivity(new Intent(getActivity(),PostActivity.class));
-             }
-         });
 
 
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(currentUserId);
+
+        /*reference = FirebaseDatabase.getInstance().getReference("Users").child(currentUserId);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -131,7 +116,7 @@ public class HomeFragment extends Fragment {
                     post_profile_image.setImageResource(R.mipmap.ic_launcher);
                 } else {
                     //and this
-                    /*Glide.with(Objects.requireNonNull(getContext())).load(user.getImageurl()).into(post_profile_image);*/
+                    *//*Glide.with(Objects.requireNonNull(getContext())).load(user.getImageurl()).into(post_profile_image);*//*
                     Picasso.get().load(user.getImageurl()).into(post_profile_image);
                 }
             }
@@ -140,7 +125,7 @@ public class HomeFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        });*/
         checkFollowing();
         return view;
     }

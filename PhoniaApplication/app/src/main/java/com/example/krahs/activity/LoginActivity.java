@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -51,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         edt_email = findViewById(R.id.email);
         edt_password = findViewById(R.id.password);
         btn_login = findViewById(R.id.btn_login);
