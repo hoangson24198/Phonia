@@ -84,7 +84,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this,"Confirm password incorrect!",Toast.LENGTH_LONG).show();
                 }*/
 
-                if (!validateUsername(str_email,str_username) || !validatePassword(str_password,cf_password)){
+                if (validateUsername(str_email,str_username) || validatePassword(str_password,cf_password)){
                     register(str_username, str_fullname, str_email, str_password);
                 }
             }
@@ -105,7 +105,8 @@ public class RegisterActivity extends AppCompatActivity {
                             map.put("id", userID);
                             map.put("username", username.toLowerCase());
                             map.put("fullname", fullname);
-                            map.put("imageurl", "https://firebasestorage.googleapis.com/v0/b/phonia-a1798.appspot.com/o/placeholder.png?alt=media&token=b438dfcd-a3f0-4a38-99f7-a3bb7d1bbc34");
+                            map.put("status","online");
+                            map.put("imageurl", "https://preview.redd.it/szvpa1e7li331.png?width=960&crop=smart&auto=webp&s=4792a89d3e0cdd732e6398e6ba1f114b27099e32");
                             map.put("bio", "");
 
                             reference.setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
