@@ -72,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/post_time"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorDark"
                 android:text="View your profile"
                 android:textSize="14sp"
                 android:fontFamily="@font/josefinsans_regular"

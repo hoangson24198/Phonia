@@ -34,10 +34,9 @@
                     android:id="@+id/inbox_btn"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginTop="10dp"
                     android:src="@drawable/ic_inbox"
-                    android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" />
                 <ImageView
                     android:id="@+id/search_btn"

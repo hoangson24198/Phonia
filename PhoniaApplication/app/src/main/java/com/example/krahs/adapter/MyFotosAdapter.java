@@ -42,7 +42,6 @@ public class MyFotosAdapter extends RecyclerView.Adapter<MyFotosAdapter.ImageVie
         final Post post = mPosts.get(position);
 
         Picasso.get().load(post.getPostimage()).into(holder.post_image);
-
         holder.post_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

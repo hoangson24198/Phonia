@@ -41,9 +41,10 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class ProfileFragment extends Fragment {
 
-    ImageView image_profile, options;
+    ImageView image_profile, cover;
     TextView posts, followers, following, fullname, bio, username;
-    Button edit_profile,message_btn;
+    ImageView message_btn;
+    Button edit_profile;
 
     private List<String> mySaves;
 
@@ -71,6 +72,7 @@ public class ProfileFragment extends Fragment {
         profileid = prefs.getString("profileid", "none");
 
         image_profile = view.findViewById(R.id.image_profile);
+        cover = view.findViewById(R.id.cover);
         posts = view.findViewById(R.id.posts);
         followers = view.findViewById(R.id.followers);
         following = view.findViewById(R.id.following);
@@ -81,7 +83,7 @@ public class ProfileFragment extends Fragment {
         username = view.findViewById(R.id.username);
         my_fotos = view.findViewById(R.id.my_fotos);
         saved_fotos = view.findViewById(R.id.saved_fotos);
-        options = view.findViewById(R.id.options);
+        /*options = view.findViewById(R.id.options);*/
 
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -115,9 +117,14 @@ public class ProfileFragment extends Fragment {
         } else {
             checkFollow();
             saved_fotos.setVisibility(View.GONE);
-            message_btn.setText("Message");
         }
 
+        edit_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), EditProfileActivity.class));
+            }
+        });
 
         edit_profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,14 +135,14 @@ public class ProfileFragment extends Fragment {
 
                     startActivity(new Intent(getContext(), EditProfileActivity.class));
 
-                } else if (btn.equals("follow")){
+                } else if (btn.equals("Follow")){
 
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
                             .child("following").child(profileid).setValue(true);
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(profileid)
                             .child("followers").child(firebaseUser.getUid()).setValue(true);
                     addNotification();
-                } else if (btn.equals("following")){
+                } else if (btn.equals("Following")){
 
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
                             .child("following").child(profileid).removeValue();
@@ -156,12 +163,12 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        options.setOnClickListener(new View.OnClickListener() {
+        /*options.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getContext(), OptionsActivity.class));
             }
-        });
+        });*/
 
         my_fotos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -226,6 +233,7 @@ public class ProfileFragment extends Fragment {
                 User user = dataSnapshot.getValue(User.class);
 
                 Picasso.get().load(user.getImageurl()).into(image_profile);
+                Picasso.get().load(user.getImageurl()).into(cover);
                 username.setText(user.getUsername());
                 fullname.setText(user.getFullname());
                 bio.setText(user.getBio());
@@ -246,9 +254,9 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child(profileid).exists()){
-                    edit_profile.setText("following");
+                    edit_profile.setText("Following");
                 } else{
-                    edit_profile.setText("follow");
+                    edit_profile.setText("Follow");
                 }
             }
 
