@@ -20,7 +20,8 @@
         android:layout_toEndOf="@id/image_profile"
         android:layout_marginLeft="10dp"
         android:layout_centerVertical="true"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        android:fontFamily="@font/josefinsans_regular"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="15dp"
@@ -60,6 +61,7 @@
         android:id="@+id/last_msg"
         android:textColor="@color/colorPrimaryDark"
         android:layout_marginLeft="20dp"
+        android:fontFamily="@font/josefinsans_regular"
         android:maxLines="1"/>
 
 </RelativeLayout>

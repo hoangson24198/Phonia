@@ -30,7 +30,8 @@
                 android:layout_marginLeft="20dp"
                 android:id="@+id/search_bar"
                 android:hint="Search..."
-                android:layout_marginStart="10dp" />
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/josefinsans_regular"/>
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>

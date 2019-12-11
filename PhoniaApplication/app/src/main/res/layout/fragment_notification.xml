@@ -26,7 +26,8 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:text="Notifications"
-                    android:textColor="#034898"
+                    android:textColor="@color/green_coral"
+                    android:fontFamily="@font/josefinsans_regular"
                     android:textStyle="bold"/>
 
             </RelativeLayout>

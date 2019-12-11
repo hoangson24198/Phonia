@@ -27,14 +27,16 @@
             android:id="@+id/username"
             android:maxLines="1"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"/>
+            android:textColor="@color/colorPrimaryDark"
+            android:fontFamily="@font/josefinsans_regular"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/fullname"
             android:maxLines="1"
-            android:text="Full Name"/>
+            android:text="Full Name"
+            android:fontFamily="@font/josefinsans_regular"/>
 
     </LinearLayout>
 

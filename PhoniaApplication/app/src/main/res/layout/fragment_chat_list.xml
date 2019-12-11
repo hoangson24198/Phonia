@@ -35,8 +35,8 @@
                 android:layout_height="wrap_content"
                 android:text="Chats"
                 android:textSize="25sp"
-                android:textColor="#034898"
-                android:textStyle="bold"
+                android:textColor="@color/green_coral"
+                android:fontFamily="@font/josefinsans_bold"
                 />
 
         </LinearLayout>
@@ -66,7 +66,8 @@
             android:paddingStart="10dp"
             android:id="@+id/search_bar"
             android:hint="Search..."
-            android:layout_marginStart="10dp" />
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/josefinsans_regular"/>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

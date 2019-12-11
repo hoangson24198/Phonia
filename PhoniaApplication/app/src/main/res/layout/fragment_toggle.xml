@@ -26,7 +26,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:text="Discovery"
-                    android:textColor="#034898"
+                    android:textColor="@color/green_coral"
                     android:textStyle="bold"/>
 
             </RelativeLayout>
@@ -75,6 +75,7 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:text="View your profile"
                 android:textSize="14sp"
+                android:fontFamily="@font/josefinsans_regular"
                 />
 
         </LinearLayout>
@@ -97,7 +98,8 @@
             android:textSize="16sp"
             android:padding="15dp"
             android:textColor="@color/colorBlack"
-            android:drawableStart="@drawable/ic_memory"/>
+            android:drawableStart="@drawable/ic_memory"
+            android:fontFamily="@font/josefinsans_regular"/>
         <TextView
             android:id="@+id/dating"
             android:layout_width="match_parent"
@@ -106,7 +108,8 @@
             android:textSize="16sp"
             android:padding="15dp"
             android:textColor="@color/colorBlack"
-            android:drawableStart="@drawable/ic_dating"/>
+            android:drawableStart="@drawable/ic_dating"
+            android:fontFamily="@font/josefinsans_regular"/>
         <TextView
             android:id="@+id/event"
             android:layout_width="match_parent"
@@ -115,7 +118,8 @@
             android:textSize="16sp"
             android:padding="15dp"
             android:textColor="@color/colorBlack"
-            android:drawableStart="@drawable/ic_event"/>
+            android:drawableStart="@drawable/ic_event"
+            android:fontFamily="@font/josefinsans_regular"/>
         <TextView
             android:id="@+id/setting"
             android:layout_width="match_parent"
@@ -124,7 +128,8 @@
             android:textSize="16sp"
             android:padding="15dp"
             android:textColor="@color/colorBlack"
-            android:drawableStart="@drawable/ic_setting"/>
+            android:drawableStart="@drawable/ic_setting"
+            android:fontFamily="@font/josefinsans_regular"/>
         <TextView
             android:id="@+id/logout"
             android:layout_width="match_parent"
@@ -133,7 +138,8 @@
             android:textSize="16sp"
             android:padding="15dp"
             android:textColor="@color/colorBlack"
-            android:drawableStart="@drawable/ic_logout"/>
+            android:drawableStart="@drawable/ic_logout"
+            android:fontFamily="@font/josefinsans_regular"/>
 
     </LinearLayout>
 

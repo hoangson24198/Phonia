@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigation.addSpaceItem(new SpaceItem(getResources().getString(R.id.nav_heart),R.drawable.ic_notify));
         bottomNavigation.addSpaceItem(new SpaceItem(getResources().getString(R.id.nav_profile),R.drawable.ic_profile));
         bottomNavigation.addSpaceItem(new SpaceItem(getResources().getString(R.id.nav_toggle),R.drawable.ic_nav));
-        bottomNavigation.setCentreButtonColor(getResources().getColor(R.color.coral));
+        bottomNavigation.setCentreButtonColor(getResources().getColor(R.color.green_natural));
         bottomNavigation.showIconOnly();
         Bundle intent = getIntent().getExtras();
         if (intent != null){

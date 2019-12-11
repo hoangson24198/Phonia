@@ -41,7 +41,8 @@
                     android:layout_centerVertical="true"
                     android:textColor="@color/colorPrimary"
                     android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true" />
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/josefinsans_regular"/>
 
             </RelativeLayout>
 
@@ -62,7 +63,8 @@
             android:hint="Bạn đang nghĩ gì...?"
             android:id="@+id/description"
             android:maxLines="5"
-            android:background="@drawable/bg_edt"/>
+            android:background="@drawable/bg_edt"
+            android:fontFamily="@font/josefinsans_regular"/>
         <TextView
             android:id="@+id/choose_photo"
             android:layout_width="wrap_content"
@@ -75,6 +77,7 @@
             android:textSize="14sp"
             android:padding="10dp"
             android:layout_marginBottom="20dp"
+            android:fontFamily="@font/josefinsans_regular"
             />
 
         <ImageView

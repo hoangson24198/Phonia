@@ -24,7 +24,8 @@
         android:text="Settings"
         android:textColor="@color/colorPrimaryDark"
         android:layout_margin="15dp"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        android:fontFamily="@font/josefinsans_regular"/>
 
 
     <TextView
@@ -34,7 +35,8 @@
         android:id="@+id/logout"
         android:textColor="@color/colorPrimaryDark"
         android:layout_margin="15dp"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        android:fontFamily="@font/josefinsans_regular"/>
 
 
 </LinearLayout>

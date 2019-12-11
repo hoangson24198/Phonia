@@ -52,6 +52,7 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:text="6/20/2019 18:52 PM"
                     android:textSize="12sp"
+                    android:fontFamily="@font/josefinsans_regular"
                     />
 
             </LinearLayout>
@@ -72,7 +73,8 @@
             android:padding="10dp"
             android:textSize="16sp"
             android:textColor="@color/colorPrimaryDark"
-            android:id="@+id/description"/>
+            android:id="@+id/description"
+            android:fontFamily="@font/josefinsans_regular"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -105,7 +107,8 @@
                 android:textColor="@color/colorAccent"
                 android:id="@+id/likes"
                 android:layout_toEndOf="@id/like"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="5dp"
+                android:fontFamily="@font/josefinsans_regular"/>
 
 
             <ImageView
@@ -124,7 +127,8 @@
                 android:textColor="@color/colorAccent"
                 android:id="@+id/comments"
                 android:layout_marginBottom="10dp"
-                android:layout_toEndOf="@id/comment"/>
+                android:layout_toEndOf="@id/comment"
+                android:fontFamily="@font/josefinsans_regular"/>
 
             <ImageView
                 android:layout_width="30dp"

@@ -26,8 +26,9 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:text="Photo"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textStyle="bold"/>
+                    android:textColor="@color/green_coral"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/josefinsans_regular"/>
 
             </RelativeLayout>
 

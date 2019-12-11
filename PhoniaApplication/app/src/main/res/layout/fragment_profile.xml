@@ -96,6 +96,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/josefinsans_regular"
                                 android:text="posts"/>
 
                         </LinearLayout>
@@ -118,6 +119,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/josefinsans_regular"
                                 android:text="followers"/>
 
                         </LinearLayout>
@@ -140,6 +142,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/josefinsans_regular"
                                 android:text="following"/>
 
                         </LinearLayout>

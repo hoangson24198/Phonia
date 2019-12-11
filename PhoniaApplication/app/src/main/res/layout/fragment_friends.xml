@@ -26,8 +26,8 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:text="Followers"
-                    android:textColor="#034898"
-                    android:textStyle="bold"/>
+                    android:textColor="@color/green_coral"
+                    android:fontFamily="@font/josefinsans_bold"/>
 
             </RelativeLayout>
 

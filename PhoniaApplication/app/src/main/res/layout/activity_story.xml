@@ -61,7 +61,8 @@
             android:id="@+id/story_username"
             android:layout_centerVertical="true"
             android:layout_margin="5dp"
-            android:layout_toEndOf="@id/story_photo"/>
+            android:layout_toEndOf="@id/story_photo"
+            android:fontFamily="@font/josefinsans_regular"/>
 
     </RelativeLayout>
 

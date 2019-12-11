@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:active_centre_button_icon_color="@color/white"
-        app:active_item_color="@color/coral"
+        app:active_item_color="@color/green_natural"
         app:centre_button_icon="@drawable/ic_add"
         app:inactive_centre_button_icon_color="@color/white"
         app:space_background_color="@color/white"

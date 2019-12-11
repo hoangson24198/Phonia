@@ -34,6 +34,7 @@
         android:id="@+id/story_username"
         android:textColor="@color/colorPrimaryDark"
         android:layout_gravity="center"
+        android:fontFamily="@font/josefinsans_regular"
         android:maxLines="1"/>
 
 </LinearLayout>

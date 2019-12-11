@@ -36,4 +36,8 @@
     </array>
     <color name="speech_bubble_user">#fff</color>
     <color name="speech_bubble_agent">#1eadf0</color>
+
+    <color name="green_coral">#01A59C</color>
+    <color name="ocean">#262362</color>
+    <color name="green_natural">#1abc9c</color>
 </resources>
