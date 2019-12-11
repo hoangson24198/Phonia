@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.krahs.R;
+import com.example.krahs.utils.CheckInternetConnection;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -43,6 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        new CheckInternetConnection(this).checkConnection();
         edt_username = findViewById(R.id.su_displayname);
         edt_email = findViewById(R.id.su_email);
         edt_fullname = findViewById(R.id.su_yourname);

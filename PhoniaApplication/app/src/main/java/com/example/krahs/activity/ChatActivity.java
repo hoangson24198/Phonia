@@ -22,6 +22,7 @@ import com.example.krahs.adapter.ChatAdapter;
 import com.example.krahs.model.Chat;
 import com.example.krahs.model.User;
 import com.example.krahs.R;
+import com.example.krahs.utils.CheckInternetConnection;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -78,6 +79,7 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        new CheckInternetConnection(this).checkConnection();
 
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);

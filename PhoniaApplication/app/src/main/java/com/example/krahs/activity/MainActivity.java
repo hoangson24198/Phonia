@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 
 import com.example.krahs.fragments.ToggleFragment;
 import com.example.krahs.R;
+import com.example.krahs.utils.CheckInternetConnection;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.fragment.app.Fragment;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        new CheckInternetConnection(this).checkConnection();
         /*bottom_navigation = findViewById(R.id.bottom_navigation);
         bottom_navigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);*/
 
