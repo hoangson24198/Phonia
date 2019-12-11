@@ -16,6 +16,7 @@ import com.example.krahs.adapter.ChatListAdapter;
 import com.example.krahs.model.ChatsList;
 import com.example.krahs.model.User;
 import com.example.krahs.R;
+import com.example.krahs.utils.CheckInternetConnection;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -44,7 +45,7 @@ public class ChatListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_chat_list, container, false);
-
+        new CheckInternetConnection(getContext()).checkConnection();
         recyclerView = view.findViewById(R.id.recycler_view_chat_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -121,4 +122,9 @@ public class ChatListFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        new CheckInternetConnection(getContext()).checkConnection();
+    }
 }

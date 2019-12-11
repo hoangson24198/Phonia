@@ -26,6 +26,7 @@ import com.example.krahs.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class SearchFragment extends Fragment {
 
@@ -75,14 +76,16 @@ public class SearchFragment extends Fragment {
         Query query = FirebaseDatabase.getInstance().getReference("Users").orderByChild("username")
                 .startAt(s)
                 .endAt(s+"\uf8ff");
-
+        final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 userList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     User user = snapshot.getValue(User.class);
+                    if (!Objects.requireNonNull(user).getId().equals(Objects.requireNonNull(firebaseUser).getUid())){
                         userList.add(user);
+                    }
                 }
 
                 userAdapter.notifyDataSetChanged();
@@ -107,8 +110,9 @@ public class SearchFragment extends Fragment {
                     userList.clear();
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         User user = snapshot.getValue(User.class);
-
-                        userList.add(user);
+                        if (!Objects.requireNonNull(user).getId().equals(Objects.requireNonNull(firebaseUser).getUid())){
+                            userList.add(user);
+                        }
 
                     }
 

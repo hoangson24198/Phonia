@@ -349,6 +349,7 @@ public class ChatActivity extends AppCompatActivity {
         status("online");
         super.onResume();
         currentUser(userid);
+        new CheckInternetConnection(this).checkConnection();
     }
 
     @Override
