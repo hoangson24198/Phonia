@@ -65,9 +65,6 @@ public class RegisterActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pd = new ProgressDialog(RegisterActivity.this);
-                pd.setMessage("Please wait...");
-                pd.show();
 
                 String str_username = edt_username.getText().toString();
                 String str_fullname = edt_fullname.getText().toString();
@@ -84,8 +81,12 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this,"Confirm password incorrect!",Toast.LENGTH_LONG).show();
                 }*/
 
-                if (validateUsername(str_email,str_username) || validatePassword(str_password,cf_password)){
-                    register(str_username, str_fullname, str_email, str_password);
+                if (validateUsername(str_email,str_username,str_fullname) || validatePassword(str_password,cf_password)){
+                        pd = new ProgressDialog(RegisterActivity.this);
+                        pd.setMessage("Please wait...");
+                        pd.show();
+                        register(str_username, str_fullname, str_email, str_password);
+
                 }
             }
         });
@@ -131,31 +132,27 @@ public class RegisterActivity extends AppCompatActivity {
     private boolean validatePassword(String pass,String retypePassword) {
 
 
-        if (pass.length() < 4 || pass.length() > 20) {
+        if (pass.length() < 4 || pass.length() > 20 || !pass.equals(retypePassword)) {
             edt_password.setError("Password Must consist of 4 to 20 characters");
-            return false;
-        }
-        if (!pass.equals(retypePassword)){
             edt_confirm_password.setError("Password and retype password not matched");
             return false;
         }
         return true;
     }
 
-    private boolean validateUsername(String email,String displayname) {
+    private boolean validateUsername(String email,String username,String fullname) {
 
-        if (email.length() < 4 || email.length() > 30) {
+        if (email.length() < 4 || email.length() > 30 || username.length()==0 || fullname.length()==0) {
             edt_email.setError("Email Must consist of 4 to 30 characters");
+            edt_username.setError("This field can't empty");
+            edt_fullname.setError("This field can't empty");
             return false;
-        } else if (!email.matches("^[A-za-z0-9.@]+")) {
+        } else if (!email.matches("^[A-za-z0-9.@]+") || username.matches("/s") ) {
             edt_email.setError("Only . and @ characters allowed");
+            edt_username.setError("Display name cannot contains spaces");
             return false;
         } else if (!email.contains("@") || !email.contains(".")) {
             edt_email.setError("Email must contain @ and .");
-            return false;
-        }
-        if (displayname.length()==0){
-            edt_username.setError("This field can't empty");
             return false;
         }
         return true;

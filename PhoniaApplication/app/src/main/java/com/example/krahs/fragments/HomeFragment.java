@@ -31,8 +31,10 @@ import com.example.krahs.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class HomeFragment extends Fragment {
 
@@ -104,28 +106,6 @@ public class HomeFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
-
-
-
-        /*reference = FirebaseDatabase.getInstance().getReference("Users").child(currentUserId);
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
-                if (Objects.requireNonNull(user).getImageurl().equals("default")){
-                    post_profile_image.setImageResource(R.mipmap.ic_launcher);
-                } else {
-                    //and this
-                    *//*Glide.with(Objects.requireNonNull(getContext())).load(user.getImageurl()).into(post_profile_image);*//*
-                    Picasso.get().load(user.getImageurl()).into(post_profile_image);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });*/
         checkFollowing();
         return view;
     }
@@ -167,12 +147,17 @@ public class HomeFragment extends Fragment {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Post post = snapshot.getValue(Post.class);
                     for (String id : followingList){
+                        assert post != null;
                         if (post.getPublisher().equals(id)){
                             postList.add(post);
+                            HashSet<Post> hashSet = new HashSet<>(postList);
+                            postList.clear();
+                            postList.addAll(hashSet);
                         }
                     }
                     currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                        if(post.getPublisher().equals(currentUserId)){
+                    assert post != null;
+                    if(post.getPublisher().equals(currentUserId)){
                             postList.add(post);
                         }
 
